@@ -1,0 +1,39 @@
+Input:
+       8
+     /  \
+    5    9
+   / \    \
+  2   6   10
+X = 3
+Output: 2
+Explanation: Floor of 3 in the given BST
+is 2
+
+
+class Sol {
+    // Function to return the floor of given number in BST.
+    int floor(Node root, int key) {
+         int  res = -1;
+         if(root==null)
+         {
+             return res;
+         }
+        while(root!=null)
+        {
+            if(root.data==key)
+             return root.data;
+            else if(root.data>key)
+            {
+                root = root.left;
+            }
+            else 
+            {
+                res = root.data;
+                root = root.right;
+            }
+        }
+        return res;
+        
+    }
+}
+
