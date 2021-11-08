@@ -1,0 +1,21 @@
+class Solution {
+    int count = 1;
+    int res = -1;
+    // Return the Kth smallest element in the given BST
+    public int KthSmallestElement(Node root, int K) {
+       traverse(root,K);
+       return res;
+    }
+    void traverse(Node node,int K)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        traverse(node.left,K);
+        if(count==K)
+        res=node.data;
+        count++;
+        traverse(node.right,K);
+    }
+}
