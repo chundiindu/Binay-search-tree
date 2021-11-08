@@ -1,0 +1,43 @@
+class GFG 
+{
+    //Function to check if any pair exists in BST
+    //whose sum is equal to given value.
+    static boolean findPair(Node root, int X) 
+    {
+       Node curr = root;
+       HashSet<Integer> h = new HashSet<Integer>();
+       while(curr!=null)
+       {
+           if(curr.data>X)
+           {
+               curr=curr.left;
+           }
+           else
+           {
+               return findPair(curr,X,h);
+           }
+       }
+       return false;
+    }
+    static boolean findPair(Node root, int x,HashSet<Integer> h)
+    {
+        if(root==null)
+        {
+            return false;
+        }
+       if (findPair(root.left,x,h)==true)
+       {
+           return true;
+       }
+        if(h.contains(x-root.data))
+        {
+            return true;
+        }
+        else
+        {
+            h.add(root.data);
+        }
+        return findPair(root.right,x,h);
+    }
+  
+}
